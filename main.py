@@ -1,0 +1,70 @@
+# ========================= Libraries ========================= #
+from tkinter import Tk, Button, Entry, Label
+from tkinter.font import Font
+from calculator import *
+# ========================= Variables ========================= #
+bg_color = '#121212'
+fg_color = 'white'
+font=('Consolas', 16)
+# ========================= Functions ========================= #
+def rectangle_calculat():
+    try:
+        width = int(rectangle_width.get())
+        height = int(rectangle_height.get())
+
+        if width and height:
+            rectangle_error.config(text='') # clear error text.
+            # calculat and show result
+            env, area = calculat_rectangle(width, height)
+            rectangle_area.config(text=f'area : {area}')
+            rectangle_env.config(text=f'env  : {env}')
+        else:
+            rectangle_area.config(text=f'')
+            rectangle_env.config(text=f'')
+            rectangle_error.config(text='ERROR !')
+    except:
+        rectangle_area.config(text=f'')
+        rectangle_env.config(text=f'')
+        rectangle_error.config(text='ERROR !')
+
+
+# ========================= Main body ========================= #
+
+
+if __name__ == "__main__":
+    tk = Tk()
+    tk.config(bg=bg_color)
+    tk.resizable(0,0)
+    tk.title('Calculator')
+    tk.geometry("900x400")
+
+    # Rectangle #
+    rectangle_title = Label(tk, text='Rectangle', font=font, bg=bg_color, fg=fg_color)
+    rectangle_title.place(relx=.11, rely=.2)
+
+    rectangle_width_label = Label(tk, text='Width:', font=('consolas', 12), bg=bg_color, fg=fg_color)
+    rectangle_width_label.place(relx=.03, rely=.3)
+
+    rectangle_height_label = Label(tk, text='Height:', font=('consolas', 12), bg=bg_color, fg=fg_color)
+    rectangle_height_label.place(relx=.025, rely=.4)
+
+    rectangle_width = Entry(tk, bg=bg_color, fg=fg_color, font=font, width=10)
+    rectangle_width.place(relx=.1, rely=0.3)
+
+    rectangle_height = Entry(tk, bg=bg_color, fg=fg_color, font=font, width=10)
+    rectangle_height.place(relx=.1, rely=0.4)
+
+    rectangle_btn = Button(tk, text='Calculat', command=rectangle_calculat, font=font, bg=bg_color, fg=fg_color, padx=6)
+    rectangle_btn.place(relx=.1, rely=0.5)
+
+    rectangle_area = Label(tk, text='', bg=bg_color, fg='green', font=font)
+    rectangle_area.place(relx=.1, rely=.7)
+
+    rectangle_env = Label(tk, text='', bg=bg_color, fg='green', font=font)
+    rectangle_env.place(relx=.1, rely=.8)
+
+    rectangle_error = Label(tk, text='', bg=bg_color, fg='red', font=font)
+    rectangle_error.place(relx=.12, rely=.75)
+
+
+    tk.mainloop()

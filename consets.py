@@ -1,1 +1,1 @@
-P = 3.14 # P number
+P = 3.141592 # P number

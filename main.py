@@ -28,6 +28,24 @@ def rectangle_calculat():
         rectangle_error.config(text='ERROR !')
 
 
+def circle_calculat():
+    try:
+        radius = int(circle_radius.get())
+        
+        if radius:
+            circle_error.config(text='') # clear error text
+
+            env, area = calculat_circle(radius)
+            circle_area.config(text=f'area : {area}')
+            circle_env.config(text=f'env  : {env}')
+        else:
+            circle_area.config(text='')
+            circle_env.config(text='')
+            circle_error.config(text='ERROR !')
+    except:
+        circle_env.config(text='')
+        circle_area.config(text='')
+        circle_error.config(text='ERROR !')
 # ========================= Main body ========================= #
 
 
@@ -66,5 +84,26 @@ if __name__ == "__main__":
     rectangle_error = Label(tk, text='', bg=bg_color, fg='red', font=font)
     rectangle_error.place(relx=.12, rely=.75)
 
+    # Circle #
+    circle_title = Label(tk, text='Circle', font=font, bg=bg_color, fg=fg_color)
+    circle_title.place(relx=.4, rely=.2)
+
+    circle_radius_label = Label(tk, text='Radius:', font=('consolas', 12), bg=bg_color, fg=fg_color)
+    circle_radius_label.place(relx=.3, rely=.3)
+
+    circle_radius = Entry(tk, bg=bg_color, fg=fg_color, font=font, width=10)
+    circle_radius.place(relx=.38, rely=0.3)
+
+    circle_btn = Button(tk, text='Calculat', command=circle_calculat, font=font, bg=bg_color, fg=fg_color, padx=6)
+    circle_btn.place(relx=.38, rely=0.5)
+
+    circle_area = Label(tk, text='', bg=bg_color, fg='green', font=font)
+    circle_area.place(relx=.38, rely=.7)
+
+    circle_env = Label(tk, text='', bg=bg_color, fg='green', font=font)
+    circle_env.place(relx=.38, rely=.8)
+
+    circle_error = Label(tk, text='', bg=bg_color, fg='red', font=font)
+    circle_error.place(relx=.41, rely=.75)
 
     tk.mainloop()

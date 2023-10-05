@@ -1,0 +1,43 @@
+Algorithm
+
+
+INIT : 
+
+1. create consets.py for conset variables.
+2. set 3.14 in P variable.
+
+
+Diamond:
+
+1. get small diagonal of user and set it in small_d variable.
+2. get big diagonal of user and set it in big_d variable.
+3. small_d division 2 and exponent 2, big_d division 2 and exponent 2 then sum thsse and set it in side variable.
+3. multip small_d to big_d to P then division to 2 and set it in area variable.
+4. multip side to 4 and set it in env variable.
+5. show env and area variables to user.
+
+
+Rectangle:
+
+1. get width of user and set it in with variable.
+2. get height of user and set it in heigth variable.
+3. multip width to height and set it in area variable.
+4. sum width to height and multip it result to 2. set result in env variable.
+5. show env and area variables to user.
+
+
+Parallelogram:
+
+1. get width and set it in width variable.
+2. get height and set it in height variable.
+3. get h and set it in h variable.
+4. multip width to h and set it in area variable.
+5. sum widht to height, then multip to 2 and set it in env variable.
+6. show area and env variables to user.
+
+Circle:
+
+1. get radius of user and set it in R variable.
+3. multip R to R to P ( R*R*P ) and set it in area variable.
+4. multip 2R to P ( R*2*P ) and set it in env variable.
+5. show env and area variables to user.

@@ -68,6 +68,27 @@ def parall_calculate():
         parall_env.config(text='')
         parall_area.config(text='')
         parall_error.config(text='ERROR !')
+
+
+def diamond_calculate():
+    try:
+        small_d = int(diamond_small_d.get())
+        big_d = int(diamond_big_d.get())
+
+        if small_d and big_d:
+            diamond_error.config(text='') # clear error text.
+
+            env, area = calculate_diamond(small_d, big_d)
+            diamond_area.config(text=f'area : {area}')
+            diamond_env.config(text=f'env  :{env}')
+        else:
+            diamond_area.config(text='')
+            diamond_env.config(text='')
+            diamond_error.config(text='ERROR !')
+    except:
+        diamond_area.config(text='')
+        diamond_env.config(text='')
+        diamond_error.config(text='ERROR !')
 # ========================= Main body ========================= #
 
 
@@ -76,7 +97,7 @@ if __name__ == "__main__":
     tk.config(bg=bg_color)
     tk.resizable(0,0)
     tk.title('Calculator')
-    tk.geometry("900x400")
+    tk.geometry("950x400")
 
     # Rectangle #
     rectangle_title = Label(tk, text='Rectangle', font=font, bg=bg_color, fg=fg_color)
@@ -161,4 +182,33 @@ if __name__ == "__main__":
 
     parall_error = Label(tk, text='', bg=bg_color, fg='red', font=font)
     parall_error.place(relx=.65, rely=.79)
+
+    # Diamond #
+    diamond_title = Label(tk, text='Diamond', font=font, bg=bg_color, fg=fg_color)
+    diamond_title.place(relx=.85, rely=.2)
+
+    diamond_small_d_label = Label(tk, text='Small:', font=('consolas', 12), bg=bg_color, fg=fg_color)
+    diamond_small_d_label.place(relx=.78, rely=.3)
+
+    diamond_big_d_label = Label(tk, text='Big:', font=('consolas', 12), bg=bg_color, fg=fg_color)
+    diamond_big_d_label.place(relx=.795, rely=.4)
+
+    diamond_small_d = Entry(tk, bg=bg_color, fg=fg_color, font=font, width=10)
+    diamond_small_d.place(relx=.85, rely=0.3)
+
+    diamond_big_d = Entry(tk, bg=bg_color, fg=fg_color, font=font, width=10)
+    diamond_big_d.place(relx=.85, rely=0.4)
+
+    diamond_btn = Button(tk, text='Calculate', command=diamond_calculate, font=font, bg=bg_color, fg=fg_color, padx=6)
+    diamond_btn.place(relx=.85, rely=0.5)
+
+    diamond_area = Label(tk, text='', bg=bg_color, fg='green', font=font)
+    diamond_area.place(relx=.86, rely=.7)
+
+    diamond_env = Label(tk, text='', bg=bg_color, fg='green', font=font)
+    diamond_env.place(relx=.86, rely=.8)
+
+    diamond_error = Label(tk, text='', bg=bg_color, fg='red', font=font)
+    diamond_error.place(relx=.88, rely=.75)
+
     tk.mainloop()
